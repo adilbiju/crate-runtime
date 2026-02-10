@@ -10,3 +10,10 @@ add_library(crate_core
 )
 target_include_directories(crate_core PUBLIC include)
 target_compile_options(crate_core PRIVATE -Wall -Wextra -Wpedantic -Wconversion)
+
+include(CTest)
+if(BUILD_TESTING)
+    add_executable(crate_config_tests tests/config_test.cpp)
+    target_link_libraries(crate_config_tests PRIVATE crate_core)
+    add_test(NAME config COMMAND crate_config_tests)
+endif()
