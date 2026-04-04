@@ -8,6 +8,7 @@ set(CMAKE_CXX_EXTENSIONS OFF)
 add_library(crate_core
     src/config.cpp
     src/io.cpp
+    src/state.cpp
 )
 target_include_directories(crate_core PUBLIC include)
 target_compile_options(crate_core PRIVATE -Wall -Wextra -Wpedantic -Wconversion)
