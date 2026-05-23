@@ -9,9 +9,15 @@ add_library(crate_core
     src/config.cpp
     src/io.cpp
     src/state.cpp
+    src/runtime.cpp
 )
 target_include_directories(crate_core PUBLIC include)
 target_compile_options(crate_core PRIVATE -Wall -Wextra -Wpedantic -Wconversion)
+
+add_executable(crate src/main.cpp)
+target_link_libraries(crate PRIVATE crate_core)
+
+install(TARGETS crate RUNTIME DESTINATION bin)
 
 include(CTest)
 if(BUILD_TESTING)
